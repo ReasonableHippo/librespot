@@ -806,7 +806,9 @@ impl SpircTask {
         }
         // for episode support:
         // set the episode bool to true
-        if context_uri.starts_with("spotify:show:") || context_uri.starts_with("spotify:episode:"){
+        debug!("URI: {:?}",context_uri);
+        if context_uri.starts_with("spotify:show:") || context_uri.starts_with("spotify:episode:") ||
+        context_uri.starts_with("spotify:collection:podcasts:episodes"){
             self.session.setEpisode(true);
         }
         else
