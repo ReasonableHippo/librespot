@@ -75,7 +75,7 @@ impl SpotifyId {
     pub fn from_uri(uri: &str) -> Result<SpotifyId, SpotifyIdError> {
         let parts = uri.split(":").collect::<Vec<&str>>();
         let gid = parts.last().unwrap();
-        if uri.contains(":episode:") {
+        if uri.contains(":episode") {
             let mut spotify_id = SpotifyId::from_base62(gid).unwrap();
             let _ = std::mem::replace(&mut spotify_id.audio_type, SpotifyAudioType::Podcast);
             Ok(spotify_id)
